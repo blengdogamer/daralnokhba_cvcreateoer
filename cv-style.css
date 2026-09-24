@@ -157,7 +157,7 @@ select option {
 .cv-card {
   width: 794px;
   height: 1123px;
-  background-image: url('main.png');
+  background-image: url('/src/main.png');
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -227,9 +227,48 @@ select option {
   z-index: 5;
 }
 
+/* التنسيق الأساسي المشترك */
 .overlay-flag-circle img {
+  display: block;
+  margin: auto;
+}
+
+/* --- تنسيق علم 1.png (جعله عريض) --- */
+.overlay-flag-circle img.flag-1 {
+  width: 100%;
+  height: 100%;         /* تقليل الارتفاع لتبدو الصورة أعرض */
+  object-fit: contain;    /* يتيح لك تمديد العلم ليملأ العرض */
+}
+
+/* --- تنسيق علم 2.png (جعله طويل / نحيف) --- */
+.overlay-flag-circle img.flag-2 {
+  width: 100%;          /* تقليل العرض لتبدو الصورة أطول */
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- يمكنك إضافة بقية الأعلام بهذه الطريقة وتعديل أبعادهم --- */
+.overlay-flag-circle img.flag-3 {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+}
+
+.overlay-flag-circle img.flag-4 {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.overlay-flag-circle img.flag-5 {
+  width: 90%;
+  height: 95%;
+  object-fit: cover;
+}
+
+.overlay-flag-circle img.flag-6 {
+  width: 90%;
+  height: 90%;
   object-fit: cover;
 }
 
@@ -303,6 +342,7 @@ select option {
 
 /* صورة العاملة (توضع في المربع الأبيض على اليسار) */
 /* صورة العاملة */
+/* صورة العاملة */
 .overlay-photo {
   position: absolute;
   top: 30.6%;
@@ -313,8 +353,8 @@ select option {
   border-radius: 10px;
   overflow: hidden;
   background-color: #ffffff;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;       /* يضمن عرض الصورة كاملة داخل البرواز */
+  background-position: center;   /* توسيط الصورة */
   background-repeat: no-repeat;
   display: flex;
   align-items: center;

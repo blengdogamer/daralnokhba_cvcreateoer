@@ -80,13 +80,22 @@ if (countrySelect) {
   countrySelect.addEventListener('change', function() {
     const selectedOption = countrySelect.options[countrySelect.selectedIndex];
     countryNameEl.innerText = selectedOption.value;
-    flagImgEl.src = selectedOption.getAttribute('data-flag');
+    
+    const flagSrc = selectedOption.getAttribute('data-flag');
+    flagImgEl.src = flagSrc;
     flagImgEl.style.display = 'block';
+
+    // استخراج رقم العلم من المسار (مثلاً /src/1.png يعطي "1")
+    if (flagSrc) {
+      const flagNum = flagSrc.split('/').pop().split('.')[0];
+      // تعيين كلاس خاص بكل علم مثل: flag-1 , flag-2
+      flagImgEl.className = 'flag-' + flagNum;
+    }
   });
 }
-
 // قراءة صورة العاملة وعرضها في المساحة المخصصة
 // قراءة صورة العاملة وعرضها كخلفية لضمان تطابق المعاينة مع الصورة المحفوظة
+// قراءة صورة العاملة وعرضها كخلفية
 document.getElementById('inputPhoto').addEventListener('change', function(event) {
   const file = event.target.files[0];
   if (file) {
@@ -94,7 +103,9 @@ document.getElementById('inputPhoto').addEventListener('change', function(event)
     reader.onload = function(e) {
       const photoContainer = document.getElementById('photoContainer');
       photoContainer.style.backgroundImage = `url('${e.target.result}')`;
-      photoContainer.style.backgroundSize = 'cover'; // لتكبير الصورة وتغطية الإطار كاملاً بدون حواف بيضاء
+      
+      // التعديل هنا: استخدام contain لضمان ظهور كامل الصورة بدون قص الوجه أو القدمين
+      photoContainer.style.backgroundSize = 'contain'; 
       photoContainer.style.backgroundPosition = 'center';
       photoContainer.style.backgroundRepeat = 'no-repeat';
       photoContainer.innerHTML = ''; // مسح النص التوضيحي الداخلي
