@@ -152,24 +152,22 @@ function downloadCVAsJPG() {
   const element = document.getElementById('cvCard');
   const codeValue = document.getElementById('inputCode').value.trim() || 'جديد';
 
-  html2canvas(element, {
-    scale: 3,             // دقة ممتازة وواضحة
-    useCORS: true,
-    logging: false,
-    scrollX: 0,
-    scrollY: 0
-  }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = `CV_DarAlNukhba_${codeValue}.jpg`;
-    link.href = canvas.toDataURL('image/jpeg', 0.98);
-    link.click();
+  // الانتظار لحين تحميل خط Cairo بالكامل قبل التقاط الصورة
+  document.fonts.ready.then(() => {
+    html2canvas(element, {
+      scale: 3,             // دقة عالية وواضحة
+      useCORS: true,
+      logging: false,
+      scrollX: 0,
+      scrollY: 0
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = `CV_DarAlNukhba_${codeValue}.jpg`;
+      link.href = canvas.toDataURL('image/jpeg', 0.98);
+      link.click();
+    });
   });
 }
-
-function printCV() {
-  window.print();
-}
-
 function printCV() {
   window.print();
 }

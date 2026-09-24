@@ -166,8 +166,14 @@ select option {
   box-sizing: border-box;
   overflow: hidden;
 }
-/* التنسيق العام لكافة مدخلات النصوص المركبة على الصورة */
+/* فرض خط Cairo على كافة العناصر والمدخلات */
+*, *::before, *::after, input, select, textarea, button {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+/* التأكيد على نصوص الهيدر والـ overlay فوق الصورة */
 .overlay-val {
+  font-family: 'Cairo', sans-serif !important;
   position: absolute;
   display: flex;
   align-items: center;
@@ -185,19 +191,19 @@ select option {
 
 /* كود رقم */
 .overlay-code {
-  top: 11.4%;
-  left: 28.5%;
+  top: 10.8%;
+  left: 24.5%;
   width: 14%;
   height: 2.2%;
   color: #0C4369;
-  font-size: 15px;
+  font-size: 19px;
   justify-content: flex-start;
 }
 
 /* اسم الدولة في المربع الأزرق العلوي */
 .overlay-country-name {
-  top: 16.8%;
-  right: 9.5%;
+  top: 16.2%;
+  right: 5.2%;
   width: 16%;
   height: 2.4%;
   color: #ffffff;
@@ -207,8 +213,8 @@ select option {
 /* دائرة العلم فوق الدائرة القشرية/البنية في القالب */
 .overlay-flag-circle {
   position: absolute;
-  top: 19.8%;
-  right: 9.3%;
+  top: 19.4%;
+  right: 5.3%;
   width: 14.8%;
   height: 10.2%;
   border-radius: 40%;
@@ -227,8 +233,8 @@ select option {
 
 /* الاسم Name */
 .overlay-name {
-  top: 17.0%;
-  left: 26.5%;
+  top: 16.5%;
+  left: 19.5%;
   width: 38%;
   height: 2.8%;
   color: #ffffff;
@@ -239,57 +245,57 @@ select option {
 
 /* الوزن */
 .overlay-weight {
-  top: 22.1%;
-  right: 33.2%;
+  top: 21.6%;
+  right: 35.2%;
   width: 13.5%;
   height: 2.2%;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* الطول */
 .overlay-height {
-  top: 22.1%;
-  right: 46.2%;
+  top: 21.6%;
+  right: 50.5%;
   width: 13.5%;
   height: 2.2%;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* رقم الجواز */
 .overlay-passport {
-  top: 25.4%;
-  right: 34.8%;
+  top: 24.8%;
+  right: 35.8%;
   width: 27.5%;
   height: 2.2%;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* الديانة */
 .overlay-religion {
-  top: 21.9%;
-  left: 9.5%;
+  top: 21.3%;
+  left: 0.5%;
   width: 25.5%;
   height: 2.2%;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 /* العمر */
 .overlay-age {
-  top: 25.4%;
-  left: 9.5%;
+  top: 24.8%;
+  left: 0.5%;
   width: 25.5%;
   height: 2.2%;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* صورة العاملة (توضع في المربع الأبيض على اليسار) */
 /* صورة العاملة */
 .overlay-photo {
   position: absolute;
-  top: 35.6%;
-  left: 9.8%;
+  top: 30.6%;
+  left: 4.8%;
   width: 27.2%;
-  height: 41.0%;
+  height: 45.0%;
   border: 1px solid #d8b4fe;
   border-radius: 10px;
   overflow: hidden;
@@ -319,13 +325,13 @@ select option {
 
 /* عنوان الخبرة (مثل: لم يسبق لها العمل) */
 .overlay-exp-title {
-  top: 31.2%;
-  right: 40.5%;
+  top: 30.8%;
+  right: 39.9%;
   width: 25%;
   height: 2.2%;
   justify-content: flex-start;
   color: #dc2626;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* العمل خارج البلاد */
@@ -334,6 +340,7 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 14px;
 }
 
 .overlay-duration {
@@ -341,6 +348,7 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 14px;
 }
 
 .overlay-exp-country {
@@ -348,6 +356,7 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+    font-size: 14px;
 }
 
 /* البيانات الشخصية */
@@ -356,6 +365,7 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+font-size: 15px;
 }
 
 .overlay-children {
@@ -363,6 +373,7 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 17px;
 }
 
 .overlay-birthplace {
@@ -370,70 +381,80 @@ select option {
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 15px;
 }
 
 /* اللغة والتعليم */
 .overlay-english {
-  top: 66.5%;
+  top: 66.8%;
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+   font-size: 17px;
 }
 
 .overlay-arabic {
-  top: 70.4%;
+  top: 70.6%;
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 17px;
 }
 
 .overlay-education {
-  top: 74.3%;
+  top: 74.7%;
   right: 25.5%;
   width: 35.5%;
   height: 2.6%;
+  font-size: 17px;
 }
 
 /* مهارات العاملة - العمود الأيمن */
 .overlay-babycare {
-  top: 82.7%;
+  top: 83.2%;
   right: 31.2%;
   width: 13.5%;
   height: 2.6%;
+    font-size: 14px;
 }
 
 .overlay-elderlycare {
-  top: 86.8%;
+  top: 87.2%;
   right: 31.2%;
   width: 13.5%;
   height: 2.6%;
+      font-size: 14px;
 }
 
 .overlay-cooking {
-  top: 90.8%;
+  top: 91.2%;
   right: 31.2%;
   width: 13.5%;
   height: 2.6%;
+      font-size: 14px;
 }
 
 /* مهارات العاملة - العمود الأيسر */
 .overlay-cleaning {
-  top: 82.7%;
-  left: 14.2%;
+  top: 83.2%;
+  left: 5.0%;
   width: 11.8%;
   height: 2.6%;
+      font-size: 14px;
 }
 
 .overlay-washing {
-  top: 86.8%;
-  left: 14.2%;
+  top: 87.2%;
+  left: 5.0%;
   width: 11.8%;
   height: 2.6%;
+      font-size: 14px;
 }
 
 .overlay-ironing {
-  top: 90.8%;
-  left: 14.2%;
+  top: 91.2%;
+  left: 5.0%;
   width: 11.8%;
   height: 2.6%;
+      font-size: 14px;
 }
