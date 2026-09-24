@@ -166,11 +166,15 @@ select option {
   box-sizing: border-box;
   overflow: hidden;
 }
-/* فرض خط Cairo على كافة العناصر والمدخلات */
-*, *::before, *::after, input, select, textarea, button {
-  font-family: 'Cairo', sans-serif !important;
+/* تطبيق خط Cairo على كافة العناصر والمدخلات */
+*, input, select, textarea, button {
+  font-family: 'Cairo', sans-serif;
 }
 
+/* حماية خط أيقونات Font Awesome من التغير */
+.fa, .fas, .far, .fal, .fab, .fa-solid, .fa-regular, .fa-brands, [class^="fa-"], [class*=" fa-"] {
+  font-family: "Font Awesome 6 Free" !important;
+}
 /* التأكيد على نصوص الهيدر والـ overlay فوق الصورة */
 /* التأكيد على نصوص الهيدر والـ overlay فوق الصورة */
 .overlay-val {
@@ -552,4 +556,173 @@ font-size: 15px;
   color: #ef4444;
   background: rgba(239, 68, 68, 0.15);
   border-radius: 6px;
+}
+
+/* === شريط أدوات التنسيق العلوي (Word Toolbar) === */
+.word-toolbar-container {
+  width: 100%;
+  max-width: 1650px;
+  margin: 15px auto 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.word-toolbar {
+  background: #1a293d;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.active-target-info {
+  background: rgba(14, 60, 94, 0.6);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: var(--dar-beige);
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 220px;
+}
+
+.active-target-info i {
+  color: #38bdf8;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-color);
+  margin: 0 2px;
+}
+
+.toolbar-select {
+  background: #0e1a2b;
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.tool-btn {
+  background: #0e1a2b;
+  border: 1px solid var(--border-color);
+  color: #d1d5db;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+  background: #243752;
+  color: #ffffff;
+}
+
+.tool-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.font-size-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+  min-width: 36px;
+  text-align: center;
+}
+
+.toolbar-color-picker {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+}
+
+.toolbar-color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.toolbar-color-picker::-webkit-color-swatch {
+  border: 1px solid #475569;
+  border-radius: 6px;
+}
+
+.quick-colors {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.color-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.color-dot:hover {
+  transform: scale(1.25);
+  border-color: #ffffff;
+}
+
+.btn-reset-style {
+  width: auto;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.btn-reset-style:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* التأثير التفاعلي للعنصر المحدد على الكارت */
+.overlay-val.active-overlay {
+  outline: 2px dashed #38bdf8 !important;
+  outline-offset: 2px;
+  background-color: rgba(56, 189, 248, 0.15) !important;
+  border-radius: 3px;
+  cursor: text;
+}
+
+@media print {
+  .word-toolbar-container {
+    display: none !important;
+  }
+  .overlay-val.active-overlay {
+    outline: none !important;
+    background-color: transparent !important;
+  }
 }

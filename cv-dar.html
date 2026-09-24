@@ -4,24 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>منشئ السيرة الذاتية - دار النخبة للإستقدام</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Almarai:wght@300;400;700;800&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@200..1000&family=Tajawal:wght@300;400;500;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="cv-style.css">
 </head>
 <body>
 
+  <!-- شريط أدوات التنسيق الاحترافي (Word Toolbar) -->
+  <div class="word-toolbar-container">
+    <div class="word-toolbar">
+      <div class="toolbar-group active-target-info">
+        <i class="fa-solid fa-i-cursor"></i>
+        <span id="activeTargetLabel">انقر على أي نص في الكارت لتعديله وتنسيقه</span>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <!-- قائمة الخطوط -->
+      <div class="toolbar-group">
+        <label title="نوع الخط"><i class="fa-solid fa-font"></i></label>
+        <select id="toolFontFamily" class="toolbar-select">
+          <option value="'Cairo', sans-serif">Cairo (افتراضي)</option>
+          <option value="'Tajawal', sans-serif">Tajawal (تجوال)</option>
+          <option value="'Almarai', sans-serif">Almarai (المرعي)</option>
+          <option value="'Amiri', serif">Amiri (أميري - كلاسيكي)</option>
+          <option value="'Aref Ruqaa', serif">Aref Ruqaa (عارف رقعة)</option>
+          <option value="'Montserrat', sans-serif">Montserrat (إنجليزي/حديث)</option>
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Courier New', monospace">Courier New</option>
+        </select>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <!-- حجم الخط -->
+      <div class="toolbar-group">
+        <label title="حجم الخط"><i class="fa-solid fa-text-height"></i></label>
+        <button type="button" class="tool-btn" id="btnFontSizeMinus" title="تصغير الخط"><i class="fa-solid fa-minus"></i></button>
+        <span id="fontSizeDisplay" class="font-size-val">15px</span>
+        <button type="button" class="tool-btn" id="btnFontSizePlus" title="تكبير الخط"><i class="fa-solid fa-plus"></i></button>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <!-- الأنماط الأساسية B I U S -->
+      <div class="toolbar-group">
+        <button type="button" class="tool-btn" id="btnBold" title="عريض (Bold)"><i class="fa-solid fa-bold"></i></button>
+        <button type="button" class="tool-btn" id="btnItalic" title="مائل (Italic)"><i class="fa-solid fa-italic"></i></button>
+        <button type="button" class="tool-btn" id="btnUnderline" title="تحته خط (Underline)"><i class="fa-solid fa-underline"></i></button>
+        <button type="button" class="tool-btn" id="btnStrikethrough" title="يتوسطه خط / شخطة (Strikethrough)"><i class="fa-solid fa-strikethrough"></i></button>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <!-- لون النص -->
+      <div class="toolbar-group">
+        <label title="لون النص"><i class="fa-solid fa-palette"></i></label>
+        <input type="color" id="toolTextColor" class="toolbar-color-picker" value="#000000" title="اختر لون النص">
+        <div class="quick-colors">
+          <span class="color-dot" style="background:#000000;" data-color="#000000" title="أسود"></span>
+          <span class="color-dot" style="background:#ffffff;" data-color="#ffffff" title="أبيض"></span>
+          <span class="color-dot" style="background:#0C4369;" data-color="#0C4369" title="أزرق النخبة"></span>
+          <span class="color-dot" style="background:#dc2626;" data-color="#dc2626" title="أحمر"></span>
+          <span class="color-dot" style="background:#16a34a;" data-color="#16a34a" title="أخضر"></span>
+          <span class="color-dot" style="background:#d97706;" data-color="#d97706" title="برتقالي/ذهبي"></span>
+        </div>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <!-- إعادة تعيين التنسيق -->
+      <div class="toolbar-group">
+        <button type="button" class="tool-btn btn-reset-style" id="btnResetStyle" title="إعادة التنسيق للوضع الافتراضي">
+          <i class="fa-solid fa-rotate-left"></i> إعادة التنسيق
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="app-container">
     
     <!-- لوحة إدخال البيانات الجانبية -->
     <aside class="editor-panel">
-<div class="panel-header">
-  <h2>إدخال بيانات - دار النخبة</h2>
-  <button type="button" class="btn-reset" onclick="location.reload()">
-    <h2>RESET ALL ⚠️</h2>
-  </button>
-</div>
+      <div class="panel-header">
+        <h2>إدخال بيانات - دار النخبة</h2>
+        <button type="button" class="btn-reset" onclick="location.reload()">
+          <h2>RESET ALL ⚠️</h2>
+        </button>
+      </div>
       <form id="cvForm">
         
         <div class="form-group full-width">
@@ -34,18 +106,18 @@
             <label>كود رقم:</label>
             <input type="text" id="inputCode" placeholder="مثال: L 1529">
           </div>
-<div class="form-group">
-  <label>الدولة والعلم:</label>
-  <select id="inputCountrySelect">
-    <option value="" disabled selected>اختر الدولة</option>
-    <option value="الفلبين" data-flag="src/1.png">الفلبين</option>
-    <option value="اثيوبيا" data-flag="src/2.png">اثيوبيا</option>
-    <option value="كينيا" data-flag="src/3.png">كينيا</option>
-    <option value="سيريلانكا" data-flag="src/4.png">سيريلانكا</option>
-    <option value="بنقلادش" data-flag="src/5.png">بنقلادش</option>
-    <option value="الهند" data-flag="src/6.png">الهند</option>
-  </select>
-</div>
+          <div class="form-group">
+            <label>الدولة والعلم:</label>
+            <select id="inputCountrySelect">
+              <option value="" disabled selected>اختر الدولة</option>
+              <option value="الفلبين" data-flag="src/1.png">الفلبين</option>
+              <option value="اثيوبيا" data-flag="src/2.png">اثيوبيا</option>
+              <option value="كينيا" data-flag="src/3.png">كينيا</option>
+              <option value="سيريلانكا" data-flag="src/4.png">سيريلانكا</option>
+              <option value="بنقلادش" data-flag="src/5.png">بنقلادش</option>
+              <option value="الهند" data-flag="src/6.png">الهند</option>
+            </select>
+          </div>
           <div class="form-group full-width">
             <label>Name (الاسم بالإنجليزية):</label>
             <input type="text" id="inputName" placeholder="الاسم الكامل">
@@ -169,7 +241,7 @@
           </div>
         </div>
 
-<button type="button" class="btn-download" onclick="downloadCVAsJPG()">تنزيل السيرة الذاتية (JPG)</button>
+        <button type="button" class="btn-download" onclick="downloadCVAsJPG()">تنزيل السيرة الذاتية (JPG)</button>
       </form>
     </aside>
 
@@ -230,7 +302,8 @@
     </main>
 
   </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="cv-script.js"></script>
 </body>
