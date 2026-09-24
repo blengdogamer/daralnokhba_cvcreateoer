@@ -183,7 +183,7 @@ select option {
   color: #000000;
   text-align: center;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: pre; /* ← تم تغييرها من nowrap إلى pre للحفاظ على جميع المسافات */
   overflow: hidden;
 }
 
