@@ -2,6 +2,7 @@
 const fieldsMap = {
   'inputCode': 'cvCode',
   'inputName': 'cvName',
+  'inputVideo': 'cvVideo',
   'inputWeight': 'cvWeight',
   'inputHeight': 'cvHeight',
   'inputReligion': 'cvReligion',

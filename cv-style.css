@@ -210,6 +210,8 @@ select option {
   font-size: 14px;
 }
 
+
+
 /* دائرة العلم فوق الدائرة القشرية/البنية في القالب */
 .overlay-flag-circle {
   position: absolute;
@@ -243,6 +245,17 @@ select option {
   direction: ltr;
 }
 
+.overlay-video {
+  top: 27.5%;
+  left: 10.5%;
+  width: 38%;
+  height: 2.8%;
+  color: #ff0000;
+  font-size: 15px;
+  justify-content: flex-start;
+  direction: ltr;
+}
+
 /* الوزن */
 .overlay-weight {
   top: 21.6%;
@@ -264,7 +277,7 @@ select option {
 /* رقم الجواز */
 .overlay-passport {
   top: 24.8%;
-  right: 35.8%;
+  right: 38.8%;
   width: 27.5%;
   height: 2.2%;
   font-size: 17px;
@@ -326,7 +339,7 @@ select option {
 /* عنوان الخبرة (مثل: لم يسبق لها العمل) */
 .overlay-exp-title {
   top: 30.8%;
-  right: 39.9%;
+  right: 42.9%;
   width: 25%;
   height: 2.2%;
   justify-content: flex-start;
