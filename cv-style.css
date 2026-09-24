@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-/* === تنسيقات الطباعة وحفظ PDF المباشر === */
-/* === تنسيقات الطباعة المباشرة والتصدير === */
 @media print {
   @page {
     size: A4 portrait;
     margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
 
   html, body {
@@ -17,7 +21,7 @@
     background: none !important;
   }
 
-  .editor-panel, .btn-download {
+  .editor-panel, .word-toolbar-container {
     display: none !important;
   }
 
@@ -36,8 +40,15 @@
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    page-break-inside: avoid !important;
-    page-break-after: avoid !important;
+    border: none !important;
+  }
+
+  .overlay-photo, .overlay-flag-circle {
+    border: none !important;
+  }
+  .overlay-val.active-overlay {
+    outline: none !important;
+    background-color: transparent !important;
   }
 }
 
