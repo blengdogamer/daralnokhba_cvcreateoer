@@ -16,7 +16,12 @@
     
     <!-- لوحة إدخال البيانات الجانبية -->
     <aside class="editor-panel">
-      <h2>إدخال بيانات - دار النخبة</h2>
+<div class="panel-header">
+  <h2>إدخال بيانات - دار النخبة</h2>
+  <button type="button" class="btn-reset" onclick="location.reload()">
+    <h2>RESET ALL ⚠️</h2>
+  </button>
+</div>
       <form id="cvForm">
         
         <div class="form-group full-width">
@@ -33,12 +38,12 @@
   <label>الدولة والعلم:</label>
   <select id="inputCountrySelect">
     <option value="" disabled selected>اختر الدولة</option>
-    <option value="الفلبين" data-flag="1.png">الفلبين</option>
-    <option value="اثيوبيا" data-flag="2.png">اثيوبيا</option>
-    <option value="كينيا" data-flag="3.png">كينيا</option>
-    <option value="سيريلانكا" data-flag="4.png">سيريلانكا</option>
-    <option value="بنقلادش" data-flag="5.png">بنقلادش</option>
-    <option value="الهند" data-flag="6.png">الهند</option>
+    <option value="الفلبين" data-flag="src/1.png">الفلبين</option>
+    <option value="اثيوبيا" data-flag="src/2.png">اثيوبيا</option>
+    <option value="كينيا" data-flag="src/3.png">كينيا</option>
+    <option value="سيريلانكا" data-flag="src/4.png">سيريلانكا</option>
+    <option value="بنقلادش" data-flag="src/5.png">بنقلادش</option>
+    <option value="الهند" data-flag="src/6.png">الهند</option>
   </select>
 </div>
           <div class="form-group full-width">
@@ -86,6 +91,7 @@
             <option value="#dc2626" selected>أحمر</option>
             <option value="#000000">أسود</option>
             <option value="#16a34a">أخضر</option>
+            <option value="#314868">ازرق</option>
           </select>
         </div>
         <div class="form-grid">

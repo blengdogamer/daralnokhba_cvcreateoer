@@ -157,7 +157,7 @@ select option {
 .cv-card {
   width: 794px;
   height: 1123px;
-  background-image: url('main.png');
+  background-image: url('src/main.png');
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -171,6 +171,7 @@ select option {
   font-family: 'Cairo', sans-serif !important;
 }
 
+/* التأكيد على نصوص الهيدر والـ overlay فوق الصورة */
 /* التأكيد على نصوص الهيدر والـ overlay فوق الصورة */
 .overlay-val {
   font-family: 'Cairo', sans-serif !important;
@@ -267,9 +268,9 @@ select option {
 }
 
 .overlay-flag-circle img.flag-6 {
-  width: 90%;
-  height: 90%;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: auto;
 }
 
 /* الاسم Name */
@@ -510,4 +511,45 @@ font-size: 15px;
   width: 11.8%;
   height: 2.6%;
       font-size: 14px;
+}
+
+/* رأس اللوحة ليدفع الزر لأقصى اليسار والعنوان لليمن */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--dar-beige);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.panel-header h2 {
+  font-size: 16px;
+  color: var(--dar-beige);
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* زر الترسيت بدون المربع الأحمر */
+.btn-reset {
+  background: transparent;
+  border: auto;
+  border-radius: 6px;
+  border: 1px solid #f87171;
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+}
+
+.btn-reset:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  border-radius: 6px;
 }
