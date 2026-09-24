@@ -127,7 +127,7 @@ select option {
   color: #fff;
 }
 
-.btn-download {
+.btn-download, .btn-print {
   width: 100%;
   background: var(--dar-beige);
   color: var(--dar-blue);
