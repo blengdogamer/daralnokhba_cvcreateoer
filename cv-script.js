@@ -442,7 +442,10 @@ function downloadCVAsJPG() {
 }
 
 function printCV() {
+  const activeEl = document.querySelector('.overlay-val.active-overlay');
+  if (activeEl) activeEl.classList.remove('active-overlay');
   window.print();
+  if (activeEl) activeEl.classList.add('active-overlay');
 }
 
 // تحديد الاسم افتراضياً عند تحميل الصفحة
