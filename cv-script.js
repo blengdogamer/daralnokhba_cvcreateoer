@@ -67,9 +67,11 @@ Object.keys(fieldsMap).forEach(inputId => {
   const targetEl = document.getElementById(fieldsMap[inputId]);
 
   if (inputEl && targetEl) {
-    // تحديث من المدخلات للكارت
-    inputEl.addEventListener('input', () => {
-      targetEl.innerText = inputEl.value;
+    // تحديث من المدخلات (سواء كانت input أو select) للكارت
+    ['input', 'change'].forEach(evt => {
+      inputEl.addEventListener(evt, () => {
+        targetEl.innerText = inputEl.value;
+      });
     });
 
     // تمكين التعديل المباشر والتزامن مع الحقول الجانبية
