@@ -290,6 +290,18 @@ select option {
   object-fit: auto;
 }
 
+.overlay-flag-circle img.flag-7 {
+  width: 100%;
+  height: 100%;
+  object-fit: auto;
+}
+
+.overlay-flag-circle img.flag-8 {
+  width: 100%;
+  height: 100%;
+  object-fit: auto;
+}
+
 /* الاسم Name */
 .overlay-name {
   top: 16.5%;

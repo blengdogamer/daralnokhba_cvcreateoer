@@ -153,6 +153,18 @@ function syncToolbarWithElement(el) {
   if (colorPicker) {
     colorPicker.value = rgbToHex(style.color);
   }
+
+  // مزامنة حالة أزرار المحاذاة (Align)
+  const justify = el.style.justifyContent || style.justifyContent;
+  const textAlign = el.style.textAlign || style.textAlign;
+
+  const isLeft = justify === 'flex-start' || textAlign === 'left';
+  const isRight = justify === 'flex-end' || textAlign === 'right';
+  const isCenter = justify === 'center' || textAlign === 'center' || (!isLeft && !isRight);
+
+  document.getElementById('btnAlignLeft')?.classList.toggle('active', isLeft);
+  document.getElementById('btnAlignCenter')?.classList.toggle('active', isCenter);
+  document.getElementById('btnAlignRight')?.classList.toggle('active', isRight);
 }
 
 /* === أحداث شريط أدوات التنسيق (Word Toolbar Actions) === */
@@ -457,3 +469,30 @@ window.addEventListener('DOMContentLoaded', () => {
     setActiveOverlayElement(nameEl);
   }
 });
+
+
+// دالة تغيير محاذاة النص (يمين - وسط - يسار)
+function setTextAlign(alignment) {
+  if (!currentActiveOverlay) return;
+
+  if (alignment === 'right') {
+    currentActiveOverlay.style.justifyContent = 'flex-end';
+    currentActiveOverlay.style.textAlign = 'right';
+  } else if (alignment === 'center') {
+    currentActiveOverlay.style.justifyContent = 'center';
+    currentActiveOverlay.style.textAlign = 'center';
+  } else if (alignment === 'left') {
+    currentActiveOverlay.style.justifyContent = 'flex-start';
+    currentActiveOverlay.style.textAlign = 'left';
+  }
+
+  // تحديث تمييز الزر النشط
+  document.getElementById('btnAlignRight')?.classList.toggle('active', alignment === 'right');
+  document.getElementById('btnAlignCenter')?.classList.toggle('active', alignment === 'center');
+  document.getElementById('btnAlignLeft')?.classList.toggle('active', alignment === 'left');
+}
+
+// أحداث النقر على أزرار المحاذاة
+document.getElementById('btnAlignRight')?.addEventListener('click', () => setTextAlign('right'));
+document.getElementById('btnAlignCenter')?.addEventListener('click', () => setTextAlign('center'));
+document.getElementById('btnAlignLeft')?.addEventListener('click', () => setTextAlign('left'));
