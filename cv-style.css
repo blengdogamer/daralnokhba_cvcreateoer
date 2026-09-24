@@ -156,6 +156,8 @@ select option {
   background: #c7af9a;
 }
 
+.btn-print { background: #0284c7; color: #ffffff; }
+
 .preview-panel {
   flex: 1;
   display: flex;
