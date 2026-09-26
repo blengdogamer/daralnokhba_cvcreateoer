@@ -420,24 +420,24 @@ select option {
 /* العمل خارج البلاد */
 .overlay-job {
   top: 35.2%;
-  right: 25.5%;
-  width: 35.5%;
+  right: 23.4%;
+  width: 42.4%;
   height: 2.6%;
   font-size: 14px;
 }
 
 .overlay-duration {
   top: 38.8%;
-  right: 25.5%;
-  width: 35.5%;
+  right: 23.4%;
+  width: 42.4%;
   height: 2.6%;
   font-size: 14px;
 }
 
 .overlay-exp-country {
   top: 42.8%;
-  right: 25.5%;
-  width: 35.5%;
+  right: 23.4%;
+  width: 42.4%;
   height: 2.6%;
     font-size: 14px;
 }

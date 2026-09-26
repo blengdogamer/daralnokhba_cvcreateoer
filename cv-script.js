@@ -264,6 +264,26 @@ document.getElementById('btnResetStyle')?.addEventListener('click', function() {
 const expTitleColorSelect = document.getElementById('inputExpTitleColor');
 const expTitleTarget = document.getElementById('cvExpTitle');
 
+// إضافة تغيير اللون التلقائي لحالة الخبرة (العمل خارج البلاد)
+const expSelectInput = document.getElementById('inputExpTitle');
+const expTargetOverlay = document.getElementById('cvExpTitle');
+
+if (expSelectInput && expTargetOverlay) {
+  expSelectInput.addEventListener('change', function() {
+    // التحقق من القيمة المحددة وتغيير اللون بناءً عليها
+    if (this.value === "سبق لها العمل") {
+      expTargetOverlay.style.color = "#dc2626"; // لون أحمر مطابق لتنسيقك الحالي
+    } else if (this.value === "لم يسبق لها العمل") {
+      expTargetOverlay.style.color = "#000000"; // لون أسود
+    }
+    
+    // تحديث أداة اختيار اللون في شريط التنسيق العلوي إذا كان هذا العنصر هو النشط حالياً
+    if (currentActiveOverlay === expTargetOverlay) {
+      document.getElementById('toolTextColor').value = rgbToHex(expTargetOverlay.style.color);
+    }
+  });
+}
+
 if (expTitleColorSelect && expTitleTarget) {
   expTitleColorSelect.addEventListener('change', function() {
     expTitleTarget.style.color = this.value;
