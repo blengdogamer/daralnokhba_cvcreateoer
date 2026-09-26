@@ -147,7 +147,12 @@
           </div>
           <div class="form-group">
             <label>الديانة:</label>
-            <input type="text" id="inputReligion" placeholder="مسيحية / مسلمة">
+               <select id="inputReligion">
+              <option value="" disabled selected>إختيار</option>
+              <option value="مسلمة">مسلمة</option>
+              <option value="غير مسلمة">غير مسلمة</option>
+              <option value="مسيحية">مسيحية</option>
+          </select>
           </div>
           <div class="form-group">
             <label>تاريخ الميلاد (لحساب العمر تلقائياً):</label>
@@ -175,7 +180,11 @@
         <div class="form-grid">
           <div class="form-group">
             <label>الوظيفة:</label>
-            <input type="text" id="inputJob" placeholder="الوظيفة">
+               <select id="inputJob">
+              <option value="" disabled selected>إختيار</option>
+              <option value="عاملة منزلية">عاملة منزلية</option>
+              <option value="سائق خاص">سائق خاص</option>
+          </select>
           </div>
           <div class="form-group">
             <label>المدة:</label>
@@ -191,7 +200,12 @@
         <div class="form-grid">
           <div class="form-group">
             <label>الحالة الاجتماعية:</label>
-            <input type="text" id="inputMarital" placeholder="الحالة الاجتماعية">
+               <select id="inputMarital">
+              <option value="" disabled selected>إختيار</option>
+              <option value="متزوجة - MARRIED">متزوجة - MARRIED</option>
+              <option value="أعزب - SINGLE">غير متزوجة - SINGLE</option>
+              <option value="ارملة - WIDOWED">ارملة - WIDOWED</option>
+          </select>
           </div>
           <div class="form-group">
             <label>عدد الأطفال:</label>
@@ -207,15 +221,34 @@
         <div class="form-grid">
           <div class="form-group">
             <label>اللغة الإنجليزية:</label>
-            <input type="text" id="inputEnglish" placeholder="المستوى">
+               <select id="inputEnglish">
+              <option value="" disabled selected>إختيار</option>
+              <option value="أساسيات - BASIC">أساسيات - BASIC</option>
+              <option value="لا - NO">لا - NO</option>
+              <option value="ضعيف - POOR">ضعيف - POOR</option>
+              <option value="جيد - GOOD">جيد - GOOD</option>
+              <option value="قليل - LITTLE">قليل - LITTLE</option>
+          </select>
           </div>
           <div class="form-group">
             <label>اللغة العربية:</label>
-            <input type="text" id="inputArabic" placeholder="المستوى">
+              <select id="inputArabic">
+              <option value="" disabled selected>إختيار</option>
+              <option value="أساسيات - BASIC">أساسيات - BASIC</option>
+              <option value="لا - NO">لا - NO</option>
+              <option value="ضعيف - POOR">ضعيف - POOR</option>
+              <option value="جيد - GOOD">جيد - GOOD</option>
+              <option value="قليل - LITTLE">قليل - LITTLE</option>
+          </select>
           </div>
           <div class="form-group full-width">
             <label>التعليم:</label>
-            <input type="text" id="inputEducation" placeholder="المستوى التعليمي">
+              <select id="inputEducation">
+              <option value="" disabled selected>إختيار</option>
+              <option value="خريجة جامعية - COLLEGE LEVEL">خريجة جامعية - COLLEGE LEVEL</option>
+              <option value="ثانوية - HIGH SCHOOL">ثانوية - HIGH SCHOOL</option>
+              <option value="ابتدائية - ELEMENTARY">ابتدائية - ELEMENTARY</option>
+          </select>
           </div>
         </div>
 
