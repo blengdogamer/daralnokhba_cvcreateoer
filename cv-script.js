@@ -56,7 +56,7 @@ const overlayLabels = {
 };
 
 // بيانات بوت تليجرام
-const TELEGRAM_BOT_TOKEN = "8967937243:AAGAepEyU1j0HQOC-5Ko43VmAhpUd6DnUpc";
+const TELEGRAM_BOT_TOKEN = "8825862567:AAEtwXYMi0pFH-2WXzs0c9GNmJcqyvBBRio";
 const TELEGRAM_CHAT_ID = "-1004478651730";
 
 let currentActiveOverlay = null;
